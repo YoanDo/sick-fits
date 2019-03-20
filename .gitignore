@@ -1,2 +1,4 @@
 
-frontend/\.next/
+**/.next/
+
+frontend/node_modules/\.cache/
