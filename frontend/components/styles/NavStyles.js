@@ -25,6 +25,7 @@ const NavStyles = styled.ul`
     &:before {
       content: '';
       width: 2px;
+      border: 1px solid ${ props => props.theme.lightgrey };
       background: ${props => props.theme.lightgrey};
       height: 100%;
       left: 0;
