@@ -1,0 +1,14 @@
+type User {
+  id: ID!,
+  name: String!
+}
+
+
+# tmp to give the resolver stuff to do
+type Mutation {
+  tmp: String
+}
+
+type Query {
+  tmp: String
+}
