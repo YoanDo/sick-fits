@@ -1,14 +1,12 @@
-type User {
-  id: ID!,
+type Dog {
   name: String!
 }
 
-
 # tmp to give the resolver stuff to do
 type Mutation {
-  tmp: String
+  createDog(name: String!): Dog
 }
 
 type Query {
-  tmp: String
+  dogs: [Dog]!
 }
