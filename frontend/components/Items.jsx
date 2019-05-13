@@ -20,6 +20,14 @@ class Items extends Component {
     return (
       <div>
         <p>I T E M S</p>
+        <Query query={ALL_ITEMS_QUERY}>
+          {({ data, loading, error }) => {
+            console.log(data, loading, error);
+            if (loading) return <p>Loading</p>
+            if (error) return <p>Error {error.message}</p>
+            return <p>Hey I'm the child of query. <br />look at that {data.items[0].title}</p>;
+          }}
+        </Query>
       </div>
     );
   }
