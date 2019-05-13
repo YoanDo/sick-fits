@@ -36,7 +36,6 @@ class Items extends Component {
         <Center>
           <Query query={ALL_ITEMS_QUERY}>
             {({ data, loading, error }) => {
-              console.log(data, loading, error);
               if (loading) return <p>Loading</p>
               if (error) return <p>Error {error.message}</p>
               return <ItemsList>
