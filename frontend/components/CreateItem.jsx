@@ -10,9 +10,16 @@ class CreateItem extends Component {
     description: '',
     image: '',
     largeImage: '',
-    price: 0
+    price: ''
   };
 
+  handleChange = (e) => {
+    const { name, type, value } = e.target;
+    // console.log({ name: name, type: type, value: value })
+    // As the input value will be inported as a text, we need to change it when the type will be number
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val })
+  }
 
   render() {
     return (
@@ -21,7 +28,17 @@ class CreateItem extends Component {
         <fieldset>
           <label htmlFor="title">
             Title
-            <input type="text" id="title" name="title" placeholder="Title" required value={this.state.title} />
+            <input type="text" id="title" name="title" placeholder="Title" required value={this.state.title} onChange={this.handleChange} />
+          </label>
+
+          <label htmlFor="price">
+            Price
+            <input type="number" id="price" name="price" placeholder="Price" required value={this.state.price} onChange={this.handleChange} />
+          </label>
+
+          <label htmlFor="description">
+            Description
+            <textarea type="text" id="description" name="description" placeholder="Description" required value={this.state.description} onChange={this.handleChange} />
           </label>
         </fieldset>
       </Form>
