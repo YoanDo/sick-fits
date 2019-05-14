@@ -12,7 +12,7 @@ class Item extends Component {
     return (
       <ItemStyles>
         {/* If there is an image display ...  it replace {item.image ? xxx : null} */}
-        {item.image && <img src="{item.image}" alt={item.title} />}
+        {item.image && <img src={item.image} alt={item.title} />}
         <Title>
           <Link href={{
             pathname: '/item',
