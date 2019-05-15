@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
+import Head from 'next/head';
 import ErrorMessage from './ErrorMessage';
 
 const SingleItemStyles = styled.div`
@@ -39,6 +40,11 @@ class SingleItem extends Component {
           const { largeImage, title } = data.item;
           console.log(data)
           return <SingleItemStyles>
+            <Head>
+              <title>
+                Sick fits | {title}
+              </title>
+            </Head>
             <img src={largeImage} alt={title} />
             Single item compo {id}
           </SingleItemStyles>
