@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import styled from 'styled-components';
 import Head from 'next/head';
 import ErrorMessage from './ErrorMessage';
+import SingleItemStyles from './styles/SingleItemStyles'
 
-const SingleItemStyles = styled.div`
-  max-width: 1200px;
-  margin: 2rem auto;
-  box-shadow: ${props => props.theme.bs};
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  min-height: 800px;
-`;
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!){
@@ -22,6 +13,7 @@ const SINGLE_ITEM_QUERY = gql`
       title
       description
       largeImage
+      price
     }
   }
 `;
@@ -37,7 +29,7 @@ class SingleItem extends Component {
           if (error) return <ErrorMessage error={error} />;
           if (loading) return <p>Loading</p>;
           if (!data.item) return <p>No item found for id: {id}</p>
-          const { largeImage, title } = data.item;
+          const { largeImage, title, description, price } = data.item;
           console.log(data)
           return <SingleItemStyles>
             <Head>
@@ -46,7 +38,11 @@ class SingleItem extends Component {
               </title>
             </Head>
             <img src={largeImage} alt={title} />
-            Single item compo {id}
+            <div className="details">
+              <h2>{title}</h2>
+              <p>{description}</p>
+              <p>price : ${price}</p>
+            </div>
           </SingleItemStyles>
         }}
       </Query>
