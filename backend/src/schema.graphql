@@ -1,13 +1,29 @@
 # import * from './generated/prisma.graphql'
 
+scalar DateTime
+
 type Mutation {
-  createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
-  updateItem(id: ID!, title: String, description: String, price: Int, image: String ): Item!
+  createItem(
+    title: String,
+    description: String,
+    price: Int,
+    image: String,
+    largeImage: String,
+    createdAt: DateTime
+    ): Item!
+  updateItem(
+    id: ID!,
+    title: String,
+    description: String,
+    price: Int,
+    image: String,
+    updatedAt: DateTime!
+     ): Item!
   deleteItem(id: ID!): Item
 }
 
 type Query {
-  items: [Item]!
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int ): [Item]!
   # ItemWhereUniqueInput comes from prisma.graphql
   item(where: ItemWhereUniqueInput): Item
   itemsConnection(where: ItemWhereInput): ItemConnection!
