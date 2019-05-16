@@ -38,9 +38,11 @@ class Items extends Component {
       <div>
         <Center>
           <Pagination page={this.props.page} />
-          <Query query={ALL_ITEMS_QUERY} variables={{
-            skip: page * perPage - perPage
-          }}>
+          <Query
+            query={ALL_ITEMS_QUERY}
+            variables={{
+              skip: page * perPage - perPage
+            }}>
             {({ data, loading, error }) => {
               if (loading) return <p>Loading</p>
               if (error) return <p>Error {error.message}</p>
