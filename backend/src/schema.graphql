@@ -10,7 +10,7 @@ type Mutation {
     image: String,
     largeImage: String,
     createdAt: DateTime
-    ): Item!
+  ): Item!
   updateItem(
     id: ID!,
     title: String,
@@ -18,8 +18,13 @@ type Mutation {
     price: Int,
     image: String,
     updatedAt: DateTime!
-     ): Item!
+  ): Item!
   deleteItem(id: ID!): Item
+  signup(
+    email: String!,
+    password: String!,
+    name: String!
+  ): User
 }
 
 type Query {

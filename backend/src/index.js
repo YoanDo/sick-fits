@@ -1,5 +1,8 @@
 // starts node server
 
+//
+const cookieParser =  require('cookie-parser');
+
 // make our variable accessible
 require('dotenv').config({
   path: 'variables.env',
@@ -12,7 +15,8 @@ const db = require('./db');
 const server = createServer();
 
 
-// TODO use express middleware to handle cookies (json web token)
+// use express middleware to handle cookies (json web token)
+server.express.use(cookieParser());
 // TODO use express middleware to populate current user
 
 
