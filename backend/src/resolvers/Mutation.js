@@ -80,7 +80,7 @@ const Mutations = {
     // finally return the user to the browser
     return user
   },
-  async SVGLinearGradientElement(parent, {
+  async signin(parent, {
     email,
     password
   }, ctx, info) {
